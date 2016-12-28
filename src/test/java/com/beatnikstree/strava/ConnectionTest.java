@@ -1,0 +1,19 @@
+package com.beatnikstree.strava;
+
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ * Created by nullpointer0x00 on 12/28/16.
+ */
+public class ConnectionTest {
+
+    @Test
+    public void testConnection(){
+        Connection connection = new Connection("someapi-key");
+        StravaResources resources = connection.getApi();
+        AthleteStravaApi athleteStravaApi = resources.getAthleteStravaApi();
+        assertNotNull(athleteStravaApi);
+
+    }
+}
