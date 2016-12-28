@@ -67,39 +67,4 @@ public class HttpActions {
         }
     }
 
-//    private String getResult(String URL){
-//        StringBuilder sb= new StringBuilder();
-//
-//        try {
-//            java.net.URL url = new URL(URL);
-//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//            conn.setRequestMethod("GET");
-//            conn.setRequestProperty("Accept", "application/json");
-//            conn.setRequestProperty("Authorization","Bearer "+getAccessToken());
-//
-//            if (conn.getResponseCode() != 200) {
-//                throw new RuntimeException("Failed : HTTP error code : "
-//                        + conn.getResponseCode() + " - " + conn.getResponseMessage());
-//            }
-//
-//            BufferedReader br = new BufferedReader(new InputStreamReader(
-//                    (conn.getInputStream())));
-//
-//            String output;
-//            while ((output = br.readLine()) != null) {
-//                sb.append(output);
-//            }
-//
-//            conn.disconnect();
-//
-//        } catch (IOException e) {
-//
-//            e.printStackTrace();
-//            return null;
-//        }
-//
-//        return sb.toString();
-//
-//    }
-
 }

@@ -34,7 +34,6 @@ public class URIBuilder {
             StringBuffer sb = new StringBuffer(baseUri);
             if(!params.isEmpty()){
                 sb.append("?");
-                boolean first = true;
                 params.keySet().stream().forEach(key -> {
                     String value = params.get(key);
                     if(sb.charAt(sb.length() - 1 ) != '?'){

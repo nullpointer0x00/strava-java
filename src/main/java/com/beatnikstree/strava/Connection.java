@@ -31,15 +31,9 @@ public class Connection {
             return new StravaResources(accessToken);
         }
         return null;
-        //https://www.strava.com/oauth/authorize?client_id=9&response_type=code&redirect_uri=http://testapp.com/token_exchange&scope=write&state=mystate&approval_prompt=force
     }
 
     private void authenticate(){
-        //Content-Type multipart/form-data
-        //https://www.strava.com/oauth/token post
-//        -F client_id=5 \
-//        -F client_secret=7b2946535949ae70f015d696d8ac602830ece412 \
-//        -F code=75e251e3ff8fff
 
     }
 
