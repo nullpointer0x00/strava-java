@@ -2,6 +2,7 @@
 .project
 .settings
 .DS_Store
+src/test/resources/strava-access-token.txt
 target
 build
 **/build
