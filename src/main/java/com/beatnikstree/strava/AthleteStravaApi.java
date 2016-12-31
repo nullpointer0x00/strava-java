@@ -1,6 +1,7 @@
 package com.beatnikstree.strava;
 
 import com.beatnikstree.strava.data.Athlete;
+import com.beatnikstree.strava.data.Stats;
 import com.beatnikstree.strava.data.Zones;
 import com.sun.jndi.toolkit.url.Uri;
 
@@ -78,6 +79,19 @@ public class AthleteStravaApi extends AbstractStravaApi {
         String response = action.doExecute(uri, "GET", requestProperties);
         if(response != null){
             return objectMapper.readValue(response, Zones.class);
+        }
+        return null;
+    }
+
+    public Stats getAthleteStats(Long id) throws Exception {
+        Map<String, String> requestProperties = new HashMap<>();
+        requestProperties.put("Accept", "application/json");
+        requestProperties.put("Authorization", "Bearer " + apiKey);
+        URI uri = this.buildUri("athletes/" + id + "/stats");
+        HttpActions action = new HttpActions();
+        String response = action.doExecute(uri, "GET", requestProperties);
+        if(response != null){
+            return objectMapper.readValue(response, Stats.class);
         }
         return null;
     }
