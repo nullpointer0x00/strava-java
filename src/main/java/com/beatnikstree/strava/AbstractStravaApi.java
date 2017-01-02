@@ -20,6 +20,14 @@ public abstract class AbstractStravaApi {
         this.apiKey = apiKey;
     }
 
+    public String doJsonGet(URI uri) throws Exception {
+        Map<String, String> requestProperties = new HashMap<>();
+        requestProperties.put("Accept", "application/json");
+        requestProperties.put("Authorization", "Bearer " + apiKey);
+        HttpActions action = new HttpActions();
+        return action.doExecute(uri, "GET", requestProperties);
+    }
+
     protected URI buildUri(String path) {
         return buildUri(path, EMPTY_PARAMETERS);
     }

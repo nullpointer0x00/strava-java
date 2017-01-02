@@ -42,12 +42,8 @@ public class AthleteStravaApi extends AbstractStravaApi {
     }
 
     public Athlete getAthelete() throws Exception {
-        Map<String, String> requestProperties = new HashMap<>();
-        requestProperties.put("Accept", "application/json");
-        requestProperties.put("Authorization", "Bearer "+ apiKey);
         URI uri = this.buildUri("athlete");
-        HttpActions action = new HttpActions();
-        String response = action.doExecute(uri, "GET", requestProperties);
+        String response = doJsonGet(uri);
         if(response != null){
             return objectMapper.readValue(response, Athlete.class);
         }
@@ -55,12 +51,8 @@ public class AthleteStravaApi extends AbstractStravaApi {
     }
 
     public Athlete getAthelete(Long id) throws Exception {
-        Map<String, String> requestProperties = new HashMap<>();
-        requestProperties.put("Accept", "application/json");
-        requestProperties.put("Authorization", "Bearer "+ apiKey);
         URI uri = this.buildUri("athletes/" + id);
-        HttpActions action = new HttpActions();
-        String response = action.doExecute(uri, "GET", requestProperties);
+        String response = doJsonGet(uri);
         if(response != null){
             return objectMapper.readValue(response, Athlete.class);
         }
@@ -69,12 +61,8 @@ public class AthleteStravaApi extends AbstractStravaApi {
 
 
     public Zones getAthleteZones() throws Exception {
-        Map<String, String> requestProperties = new HashMap<>();
-        requestProperties.put("Accept", "application/json");
-        requestProperties.put("Authorization", "Bearer "+ apiKey);
         URI uri = this.buildUri("athlete/zones");
-        HttpActions action = new HttpActions();
-        String response = action.doExecute(uri, "GET", requestProperties);
+        String response = doJsonGet(uri);;
         if(response != null){
             return objectMapper.readValue(response, Zones.class);
         }
@@ -82,12 +70,8 @@ public class AthleteStravaApi extends AbstractStravaApi {
     }
 
     public Stats getAthleteStats(Long id) throws Exception {
-        Map<String, String> requestProperties = new HashMap<>();
-        requestProperties.put("Accept", "application/json");
-        requestProperties.put("Authorization", "Bearer " + apiKey);
         URI uri = this.buildUri("athletes/" + id + "/stats");
-        HttpActions action = new HttpActions();
-        String response = action.doExecute(uri, "GET", requestProperties);
+        String response = doJsonGet(uri);
         if(response != null){
             return objectMapper.readValue(response, Stats.class);
         }
@@ -99,9 +83,6 @@ public class AthleteStravaApi extends AbstractStravaApi {
     }
 
     public SegmentEffort[] getListAthleteKOMS(Long id, int perPage, int page) throws Exception {
-        Map<String, String> requestProperties = new HashMap<>();
-        requestProperties.put("Accept", "application/json");
-        requestProperties.put("Authorization", "Bearer " + apiKey);
         Map<String, String> params = new HashMap<>();
         if(perPage != 0){
             params.put("per_page", perPage + "");
@@ -110,8 +91,7 @@ public class AthleteStravaApi extends AbstractStravaApi {
             params.put("page", page + "");
         }
         URI uri = this.buildUri("athletes/" + id + "/koms", params);
-        HttpActions action = new HttpActions();
-        String response = action.doExecute(uri, "GET", requestProperties);
+        String response = doJsonGet(uri);
         if(response != null){
             return objectMapper.readValue(response, SegmentEffort[].class);
         }
