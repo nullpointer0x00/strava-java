@@ -260,5 +260,4 @@ public class Athlete implements Serializable {
     public void setWeight(Double weight) {
         this.weight = weight;
     }
-
 }

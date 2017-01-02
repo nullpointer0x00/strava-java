@@ -1,8 +1,6 @@
 package com.beatnikstree.strava;
 
-import com.beatnikstree.strava.data.Athlete;
-import com.beatnikstree.strava.data.Stats;
-import com.beatnikstree.strava.data.Zones;
+import com.beatnikstree.strava.data.*;
 import com.sun.jndi.toolkit.url.Uri;
 
 import java.net.URI;
@@ -92,6 +90,30 @@ public class AthleteStravaApi extends AbstractStravaApi {
         String response = action.doExecute(uri, "GET", requestProperties);
         if(response != null){
             return objectMapper.readValue(response, Stats.class);
+        }
+        return null;
+    }
+
+    public SegmentEffort[] getListAthleteKOMS(Long id) throws Exception {
+        return getListAthleteKOMS(id, 0, 0);
+    }
+
+    public SegmentEffort[] getListAthleteKOMS(Long id, int perPage, int page) throws Exception {
+        Map<String, String> requestProperties = new HashMap<>();
+        requestProperties.put("Accept", "application/json");
+        requestProperties.put("Authorization", "Bearer " + apiKey);
+        Map<String, String> params = new HashMap<>();
+        if(perPage != 0){
+            params.put("per_page", perPage + "");
+        }
+        if(page != 0){
+            params.put("page", page + "");
+        }
+        URI uri = this.buildUri("athletes/" + id + "/koms", params);
+        HttpActions action = new HttpActions();
+        String response = action.doExecute(uri, "GET", requestProperties);
+        if(response != null){
+            return objectMapper.readValue(response, SegmentEffort[].class);
         }
         return null;
     }

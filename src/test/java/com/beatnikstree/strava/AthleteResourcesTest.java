@@ -1,8 +1,6 @@
 package com.beatnikstree.strava;
 
-import com.beatnikstree.strava.data.Athlete;
-import com.beatnikstree.strava.data.Stats;
-import com.beatnikstree.strava.data.Zones;
+import com.beatnikstree.strava.data.*;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
@@ -59,6 +57,19 @@ public class AthleteResourcesTest {
     public void athleteStravaApiShouldGetAthleteStats() throws Exception {
         Stats stats = stravaResources.getAthleteStravaApi().getAthleteStats(1481479L);
         assertNotNull(stats);
+    }
+
+    @Test
+    public void athleteStravaApiShouldGetListAthleteKMOS() throws Exception {
+        SegmentEffort[] stats = stravaResources.getAthleteStravaApi().getListAthleteKOMS(1481479L);
+        assertNotNull(stats);
+    }
+
+    @Test
+    public void athleteStravaApiShouldGetListAthleteKMOSWithPages() throws Exception {
+        SegmentEffort[] stats = stravaResources.getAthleteStravaApi().getListAthleteKOMS(1481479L, 1, 3);
+        assertNotNull(stats);
+        assertEquals(1, stats.length);
     }
 
 }

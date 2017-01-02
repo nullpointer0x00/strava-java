@@ -13,23 +13,23 @@ public class Stats implements Serializable {
     private Double biggestRideDistance;
     @JsonProperty(value = "biggest_climb_elevation_gain")
     private Double biggestClimbElevationGain;
-    @JsonProperty("recent_ride_totals")
+    @JsonProperty(value = "recent_ride_totals")
     private Totals recentRideTotals;
-    @JsonProperty("recent_run_totals")
+    @JsonProperty(value = "recent_run_totals")
     private Totals recentRunTotals;
-    @JsonProperty("recent_swim_totals")
+    @JsonProperty(value = "recent_swim_totals")
     private Totals recentSwimTotals;
-    @JsonProperty("ytd_ride_totals")
+    @JsonProperty(value = "ytd_ride_totals")
     private Totals ytdRideTotals;
-    @JsonProperty("ytd_run_totals")
+    @JsonProperty(value = "ytd_run_totals")
     private Totals ytdRunTotals;
-    @JsonProperty("ytd_swim_totals")
+    @JsonProperty(value = "ytd_swim_totals")
     private Totals ytdSwimTotals;
-    @JsonProperty("all_ride_totals")
+    @JsonProperty(value = "all_ride_totals")
     private Totals allRideTotals;
-    @JsonProperty("all_run_totals")
+    @JsonProperty(value = "all_run_totals")
     private Totals allRunTotals;
-    @JsonProperty("all_swim_totals")
+    @JsonProperty(value = "all_swim_totals")
     private Totals allSwimTotals;
 
     public Double getBiggestRideDistance() {
