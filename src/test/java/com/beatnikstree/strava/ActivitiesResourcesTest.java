@@ -7,6 +7,8 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.InputStream;
+import java.util.Calendar;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -43,4 +45,58 @@ public class ActivitiesResourcesTest {
         assertTrue(activities.length > 0);
     }
 
+    @Test
+    public void activitesStravaApiShouldAuthenticatedAthletesActivitesPaged() throws Exception {
+        Activity[] activities = stravaResources.getActivitiesStravaApi().getAthleteActivities(1, 10);
+        assertNotNull(activities);
+        assertEquals(10, activities.length);
+    }
+
+    @Test
+    public void activitesStravaApiShouldAuthenticatedAthletesActivitesAfter() throws Exception {
+        Calendar cal = Calendar.getInstance();
+        cal.set(2016, 2, 2);
+        Activity[] activities = stravaResources.getActivitiesStravaApi().getAthleteActivitiesAfter(cal.getTime());
+        assertNotNull(activities);
+        assertTrue(activities.length > 0);
+        for (Activity activity : activities) {
+            assertTrue(activity.getStartDate().after(cal.getTime()));
+        }
+    }
+
+    @Test
+    public void activitesStravaApiShouldAuthenticatedAthletesActivitesAfterPerPage() throws Exception {
+        Calendar cal = Calendar.getInstance();
+        cal.set(2016, 2, 2);
+        Activity[] activities = stravaResources.getActivitiesStravaApi().getAthleteActivitiesAfter(cal.getTime(), 10);
+        assertNotNull(activities);
+        assertEquals(10, activities.length);
+        for (Activity activity : activities) {
+            assertTrue(activity.getStartDate().after(cal.getTime()));
+        }
+    }
+
+    @Test
+    public void activitesStravaApiShouldAuthenticatedAthletesActivitesBefore() throws Exception {
+        Calendar cal = Calendar.getInstance();
+        cal.set(2016, 2, 2);
+        Activity[] activities = stravaResources.getActivitiesStravaApi().getAthleteActivitiesBefore(cal.getTime());
+        assertNotNull(activities);
+        assertTrue(activities.length > 0);
+        for (Activity activity : activities) {
+            assertTrue(activity.getStartDate().before(cal.getTime()));
+        }
+    }
+
+    @Test
+    public void activitesStravaApiShouldAuthenticatedAthletesActivitesBeforePage() throws Exception {
+        Calendar cal = Calendar.getInstance();
+        cal.set(2016, 2, 2);
+        Activity[] activities = stravaResources.getActivitiesStravaApi().getAthleteActivitiesBefore(cal.getTime(), 10);
+        assertNotNull(activities);
+        assertEquals(10, activities.length);
+        for (Activity activity : activities) {
+            assertTrue(activity.getStartDate().before(cal.getTime()));
+        }
+    }
 }
