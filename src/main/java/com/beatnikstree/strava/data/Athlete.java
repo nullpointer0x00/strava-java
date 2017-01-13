@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Created by nullpointer0x00 on 12/28/16.
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = false)
 public class Athlete implements Serializable {
 
     private Long id;

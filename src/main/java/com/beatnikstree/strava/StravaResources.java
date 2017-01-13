@@ -8,6 +8,7 @@ public class StravaResources {
     final String accessToken;
 
     private AthleteStravaApi athleteStravaApi;
+    private ActivitiesStravaApi activitiesStravaApi;
 
     public StravaResources(String accessToken){
         this.accessToken = accessToken;
@@ -18,6 +19,13 @@ public class StravaResources {
             athleteStravaApi = new AthleteStravaApi(accessToken);
         }
         return athleteStravaApi;
+    }
+
+    public ActivitiesStravaApi getActivitiesStravaApi(){
+        if(activitiesStravaApi == null){
+            activitiesStravaApi = new ActivitiesStravaApi(accessToken);
+        }
+        return activitiesStravaApi;
     }
 
 }

@@ -99,7 +99,7 @@ public class AthleteStravaApi extends AbstractStravaApi {
     }
 
 //    public Athlete updateCurrentAthlete(String city, String state, AthleteSex athleteSex, Float weight) throws Exception {
-//        Map<String, String> requestProperties = new HashMap<>();
+//        ActivityMap<String, String> requestProperties = new HashMap<>();
 //        requestProperties.put("Accept", "application/json");
 //        requestProperties.put("Authorization", "Bearer "+ apiKey);
 //        if(city != null){

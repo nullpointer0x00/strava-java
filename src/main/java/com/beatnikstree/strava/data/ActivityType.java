@@ -1,5 +1,7 @@
 package com.beatnikstree.strava.data;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  * Created by nullpointer0x00 on 1/2/17.
  */
@@ -41,6 +43,7 @@ public enum ActivityType {
         this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
         return value;
     }

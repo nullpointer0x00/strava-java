@@ -4,6 +4,7 @@ import com.beatnikstree.strava.data.*;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -20,7 +21,6 @@ public class AthleteResourcesTest {
 
     @Before
     public void setUp() throws Exception {
-
         //must add strava-access-token.txt to src/test/resources folder
         //file must contain one line with your strava access token
         InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream("strava-access-token.txt");
@@ -54,8 +54,10 @@ public class AthleteResourcesTest {
     }
 
     @Test
+    @Ignore("In order for this test to work.  You must enter one of your friend's ids. ")
     public void athleteStravaApiShouldGetAthleteStats() throws Exception {
-        Stats stats = stravaResources.getAthleteStravaApi().getAthleteStats(1481479L);
+        Long myFriendId = 227615L;
+        Stats stats = stravaResources.getAthleteStravaApi().getAthleteStats(myFriendId);
         assertNotNull(stats);
     }
 
