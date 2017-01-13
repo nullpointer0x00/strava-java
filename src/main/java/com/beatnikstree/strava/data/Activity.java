@@ -94,6 +94,10 @@ public class Activity {
     private Float averageHeartrate;
     @JsonProperty(value = "max_heartrate")
     private Float maxHeartrate;
+    @JsonProperty(value = "weighted_average_watts")
+    private Float weightedAverageWatts;
+    @JsonProperty(value = "max_watts")
+    private Float maxWatts;
     @JsonProperty(value = "calories")
     private Float calories;
     @JsonProperty(value = "has_kudoed")
@@ -508,6 +512,22 @@ public class Activity {
 
     public void setMaxHeartrate(Float maxHeartrate) {
         this.maxHeartrate = maxHeartrate;
+    }
+
+    public Float getWeightedAverageWatts() {
+        return weightedAverageWatts;
+    }
+
+    public void setWeightedAverageWatts(Float weightedAverageWatts) {
+        this.weightedAverageWatts = weightedAverageWatts;
+    }
+
+    public Float getMaxWatts() {
+        return maxWatts;
+    }
+
+    public void setMaxWatts(Float maxWatts) {
+        this.maxWatts = maxWatts;
     }
 
     public Float getCalories() {

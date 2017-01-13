@@ -99,4 +99,11 @@ public class ActivitiesResourcesTest {
             assertTrue(activity.getStartDate().before(cal.getTime()));
         }
     }
+
+    @Test
+    public void activitesStravaApiShouldGetFriendsActivites() throws Exception {
+        Activity[] activities = stravaResources.getActivitiesStravaApi().getFriendsActivities();
+        assertNotNull(activities);
+        assertTrue(activities.length > 0);
+    }
 }

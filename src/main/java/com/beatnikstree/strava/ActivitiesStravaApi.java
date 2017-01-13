@@ -94,4 +94,14 @@ public class ActivitiesStravaApi extends AbstractStravaApi {
         return null;
     }
 
+    public Activity[] getFriendsActivities() throws Exception {
+        Map<String, String> params = new HashMap<>();
+        URI uri = this.buildUri("activities/following", params);
+        String response = doJsonGet(uri);
+        if (response != null) {
+            return objectMapper.readValue(response, Activity[].class);
+        }
+        return null;
+    }
+
 }
