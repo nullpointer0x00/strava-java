@@ -10,6 +10,7 @@ import java.io.InputStream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by nullpointer0x00 on 12/28/16.
@@ -30,9 +31,16 @@ public class ActivitiesResourcesTest {
     }
 
     @Test
-    public void athleteStravaApiShouldGetCurrentAthlete() throws Exception {
+    public void activitesStravaApiShouldGetActivityById() throws Exception {
         Activity activity = stravaResources.getActivitiesStravaApi().getActivity(829679899L);
         assertNotNull(activity);
+    }
+
+    @Test
+    public void activitesStravaApiShouldAuthenticatedAthletesActivites() throws Exception {
+        Activity[] activities = stravaResources.getActivitiesStravaApi().getAthleteActivities();
+        assertNotNull(activities);
+        assertTrue(activities.length > 0);
     }
 
 }

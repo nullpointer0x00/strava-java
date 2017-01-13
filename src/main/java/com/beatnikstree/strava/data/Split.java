@@ -10,8 +10,8 @@ import java.io.Serializable;
 public class Split implements Serializable {
 
     @JsonProperty(value = "average_speed")
-    private Double averageSpeed;
-    private Double distance;
+    private Float averageSpeed;
+    private Float distance;
     @JsonProperty(value = "elapsed_time")
     private Integer elapsedTime;
     @JsonProperty(value = "elevation_difference")
@@ -22,19 +22,19 @@ public class Split implements Serializable {
     private Integer movingTime;
     private Integer split;
 
-    public Double getAverageSpeed() {
+    public Float getAverageSpeed() {
         return averageSpeed;
     }
 
-    public void setAverageSpeed(Double averageSpeed) {
+    public void setAverageSpeed(Float averageSpeed) {
         this.averageSpeed = averageSpeed;
     }
 
-    public Double getDistance() {
+    public Float getDistance() {
         return distance;
     }
 
-    public void setDistance(Double distance) {
+    public void setDistance(Float distance) {
         this.distance = distance;
     }
 

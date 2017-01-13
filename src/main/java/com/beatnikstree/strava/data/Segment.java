@@ -15,27 +15,27 @@ public class Segment implements Serializable {
     private String name;
     @JsonProperty(value = "activity_type")
     private String activityType;
-    private Double distance;
+    private Float distance;
     @JsonProperty(value = "average_grade")
-    private Double averageGrade;
+    private Float averageGrade;
     @JsonProperty(value = "maximum_grade")
-    private Double maximumGrade;
+    private Float maximumGrade;
     @JsonProperty(value = "elevation_high")
-    private Double elevationHigh;
+    private Float elevationHigh;
     @JsonProperty(value = "elevation_low")
-    private Double elevationLow;
+    private Float elevationLow;
     @JsonProperty(value = "start_latitude")
-    private Double endLatitude;
+    private Float endLatitude;
     @JsonProperty(value = "start_longitude")
-    private Double endLongitude;
+    private Float endLongitude;
     @JsonProperty(value = "end_latitude")
-    private Double startLatitude;
+    private Float startLatitude;
     @JsonProperty(value = "end_longitude")
-    private Double startLongitude;
+    private Float startLongitude;
     @JsonProperty(value = "start_latlng")
-    private Double[] startLatLng;
+    private Float[] startLatLng;
     @JsonProperty(value = "end_latlng")
-    private Double[] endLatLng;
+    private Float[] endLatLng;
     private Boolean starred;
     private Boolean hazardous;
     @JsonProperty(value = "climb_category")
@@ -78,91 +78,91 @@ public class Segment implements Serializable {
         this.activityType = activityType;
     }
 
-    public Double getDistance() {
+    public Float getDistance() {
         return distance;
     }
 
-    public void setDistance(Double distance) {
+    public void setDistance(Float distance) {
         this.distance = distance;
     }
 
-    public Double getAverageGrade() {
+    public Float getAverageGrade() {
         return averageGrade;
     }
 
-    public void setAverageGrade(Double averageGrade) {
+    public void setAverageGrade(Float averageGrade) {
         this.averageGrade = averageGrade;
     }
 
-    public Double getMaximumGrade() {
+    public Float getMaximumGrade() {
         return maximumGrade;
     }
 
-    public void setMaximumGrade(Double maximumGrade) {
+    public void setMaximumGrade(Float maximumGrade) {
         this.maximumGrade = maximumGrade;
     }
 
-    public Double getElevationHigh() {
+    public Float getElevationHigh() {
         return elevationHigh;
     }
 
-    public void setElevationHigh(Double elevationHigh) {
+    public void setElevationHigh(Float elevationHigh) {
         this.elevationHigh = elevationHigh;
     }
 
-    public Double getElevationLow() {
+    public Float getElevationLow() {
         return elevationLow;
     }
 
-    public void setElevationLow(Double elevationLow) {
+    public void setElevationLow(Float elevationLow) {
         this.elevationLow = elevationLow;
     }
 
-    public Double getEndLatitude() {
+    public Float getEndLatitude() {
         return endLatitude;
     }
 
-    public void setEndLatitude(Double endLatitude) {
+    public void setEndLatitude(Float endLatitude) {
         this.endLatitude = endLatitude;
     }
 
-    public Double getEndLongitude() {
+    public Float getEndLongitude() {
         return endLongitude;
     }
 
-    public void setEndLongitude(Double endLongitude) {
+    public void setEndLongitude(Float endLongitude) {
         this.endLongitude = endLongitude;
     }
 
-    public Double getStartLatitude() {
+    public Float getStartLatitude() {
         return startLatitude;
     }
 
-    public void setStartLatitude(Double startLatitude) {
+    public void setStartLatitude(Float startLatitude) {
         this.startLatitude = startLatitude;
     }
 
-    public Double getStartLongitude() {
+    public Float getStartLongitude() {
         return startLongitude;
     }
 
-    public void setStartLongitude(Double startLongitude) {
+    public void setStartLongitude(Float startLongitude) {
         this.startLongitude = startLongitude;
     }
 
-    public Double[] getStartLatLng() {
+    public Float[] getStartLatLng() {
         return startLatLng;
     }
 
-    public void setStartLatLng(Double[] startLatLng) {
+    public void setStartLatLng(Float[] startLatLng) {
         this.startLatLng = startLatLng;
     }
 
-    public Double[] getEndLatLng() {
+    public Float[] getEndLatLng() {
         return endLatLng;
     }
 
-    public void setEndLatLng(Double[] endLatLng) {
+    public void setEndLatLng(Float[] endLatLng) {
         this.endLatLng = endLatLng;
     }
 

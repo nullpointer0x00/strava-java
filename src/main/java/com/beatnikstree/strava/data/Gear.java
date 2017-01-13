@@ -14,7 +14,7 @@ public class Gear implements Serializable {
     private Integer resourceState;
     private Boolean primary;
     private String name;
-    private Double distance;
+    private Float distance;
 
     public String getId() {
         return id;
@@ -48,11 +48,11 @@ public class Gear implements Serializable {
         this.name = name;
     }
 
-    public Double getDistance() {
+    public Float getDistance() {
         return distance;
     }
 
-    public void setDistance(Double distance) {
+    public void setDistance(Float distance) {
         this.distance = distance;
     }
 }

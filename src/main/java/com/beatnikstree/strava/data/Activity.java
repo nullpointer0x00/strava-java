@@ -19,17 +19,17 @@ public class Activity {
     private Athlete athlete;
     private String name;
     private String description;
-    private Double distance;
+    private Float distance;
     @JsonProperty(value = "moving_time")
     private Integer movingTime;
     @JsonProperty(value = "elapsed_time")
     private Integer elapsedTime;
     @JsonProperty(value = "total_elevation_gain")
-    private Double totalElevationGain;
+    private Float totalElevationGain;
     @JsonProperty(value = "elev_high")
-    private Double elevHigh;
+    private Float elevHigh;
     @JsonProperty(value = "elev_low")
-    private Double elevLow;
+    private Float elevLow;
     @JsonProperty(value = "type")
     private ActivityType activityType;
     @JsonProperty(value = "start_date")
@@ -39,17 +39,17 @@ public class Activity {
     @JsonProperty(value = "timezone")
     private String timezone;
     @JsonProperty(value = "start_latitude")
-    private Double endLatitude;
+    private Float endLatitude;
     @JsonProperty(value = "start_longitude")
-    private Double endLongitude;
+    private Float endLongitude;
     @JsonProperty(value = "end_latitude")
-    private Double startLatitude;
+    private Float startLatitude;
     @JsonProperty(value = "end_longitude")
-    private Double startLongitude;
+    private Float startLongitude;
     @JsonProperty(value = "start_latlng")
-    private Double[] startLatLng;
+    private Float[] startLatLng;
     @JsonProperty(value = "end_latlng")
-    private Double[] endLatLng;
+    private Float[] endLatLng;
     @JsonProperty(value = "achievement_count")
     private Integer achievementCount;
     @JsonProperty(value = "kudos_count")
@@ -76,17 +76,26 @@ public class Activity {
     private String gearId;
     private Gear gear;
     @JsonProperty(value = "average_speed")
-    private Double averageSpeed;
+    private Float averageSpeed;
     @JsonProperty(value = "max_speed")
-    private Double maxSpeed;
+    private Float maxSpeed;
     @JsonProperty(value = "average_cadence")
-    private Double averageCadence;
+    private Float averageCadence;
+    private Float kilojoules;
+    @JsonProperty(value = "average_watts")
+    private Float averageWatts;
+    @JsonProperty(value = "device_watts")
+    private Boolean deviceWatts;
     @JsonProperty(value = "average_temp")
-    private Double averageTemp;
+    private Float averageTemp;
     @JsonProperty(value = "has_heartrate")
     private Boolean hasHeartrate;
+    @JsonProperty(value = "average_heartrate")
+    private Float averageHeartrate;
+    @JsonProperty(value = "max_heartrate")
+    private Float maxHeartrate;
     @JsonProperty(value = "calories")
-    private Double calories;
+    private Float calories;
     @JsonProperty(value = "has_kudoed")
     private Boolean hasKudoed;
     @JsonProperty(value = "segment_efforts")
@@ -165,11 +174,11 @@ public class Activity {
         this.description = description;
     }
 
-    public Double getDistance() {
+    public Float getDistance() {
         return distance;
     }
 
-    public void setDistance(Double distance) {
+    public void setDistance(Float distance) {
         this.distance = distance;
     }
 
@@ -189,27 +198,27 @@ public class Activity {
         this.elapsedTime = elapsedTime;
     }
 
-    public Double getTotalElevationGain() {
+    public Float getTotalElevationGain() {
         return totalElevationGain;
     }
 
-    public void setTotalElevationGain(Double totalElevationGain) {
+    public void setTotalElevationGain(Float totalElevationGain) {
         this.totalElevationGain = totalElevationGain;
     }
 
-    public Double getElevHigh() {
+    public Float getElevHigh() {
         return elevHigh;
     }
 
-    public void setElevHigh(Double elevHigh) {
+    public void setElevHigh(Float elevHigh) {
         this.elevHigh = elevHigh;
     }
 
-    public Double getElevLow() {
+    public Float getElevLow() {
         return elevLow;
     }
 
-    public void setElevLow(Double elevLow) {
+    public void setElevLow(Float elevLow) {
         this.elevLow = elevLow;
     }
 
@@ -245,51 +254,51 @@ public class Activity {
         this.timezone = timezone;
     }
 
-    public Double getEndLatitude() {
+    public Float getEndLatitude() {
         return endLatitude;
     }
 
-    public void setEndLatitude(Double endLatitude) {
+    public void setEndLatitude(Float endLatitude) {
         this.endLatitude = endLatitude;
     }
 
-    public Double getEndLongitude() {
+    public Float getEndLongitude() {
         return endLongitude;
     }
 
-    public void setEndLongitude(Double endLongitude) {
+    public void setEndLongitude(Float endLongitude) {
         this.endLongitude = endLongitude;
     }
 
-    public Double getStartLatitude() {
+    public Float getStartLatitude() {
         return startLatitude;
     }
 
-    public void setStartLatitude(Double startLatitude) {
+    public void setStartLatitude(Float startLatitude) {
         this.startLatitude = startLatitude;
     }
 
-    public Double getStartLongitude() {
+    public Float getStartLongitude() {
         return startLongitude;
     }
 
-    public void setStartLongitude(Double startLongitude) {
+    public void setStartLongitude(Float startLongitude) {
         this.startLongitude = startLongitude;
     }
 
-    public Double[] getStartLatLng() {
+    public Float[] getStartLatLng() {
         return startLatLng;
     }
 
-    public void setStartLatLng(Double[] startLatLng) {
+    public void setStartLatLng(Float[] startLatLng) {
         this.startLatLng = startLatLng;
     }
 
-    public Double[] getEndLatLng() {
+    public Float[] getEndLatLng() {
         return endLatLng;
     }
 
-    public void setEndLatLng(Double[] endLatLng) {
+    public void setEndLatLng(Float[] endLatLng) {
         this.endLatLng = endLatLng;
     }
 
@@ -421,35 +430,59 @@ public class Activity {
         this.gear = gear;
     }
 
-    public Double getAverageSpeed() {
+    public Float getAverageSpeed() {
         return averageSpeed;
     }
 
-    public void setAverageSpeed(Double averageSpeed) {
+    public void setAverageSpeed(Float averageSpeed) {
         this.averageSpeed = averageSpeed;
     }
 
-    public Double getMaxSpeed() {
+    public Float getMaxSpeed() {
         return maxSpeed;
     }
 
-    public void setMaxSpeed(Double maxSpeed) {
+    public void setMaxSpeed(Float maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
 
-    public Double getAverageCadence() {
+    public Float getAverageCadence() {
         return averageCadence;
     }
 
-    public void setAverageCadence(Double averageCadence) {
+    public void setAverageCadence(Float averageCadence) {
         this.averageCadence = averageCadence;
     }
 
-    public Double getAverageTemp() {
+    public Float getAverageWatts() {
+        return averageWatts;
+    }
+
+    public void setAverageWatts(Float averageWatts) {
+        this.averageWatts = averageWatts;
+    }
+
+    public Float getKilojoules() {
+        return kilojoules;
+    }
+
+    public void setKilojoules(Float kilojoules) {
+        this.kilojoules = kilojoules;
+    }
+
+    public Boolean getDeviceWatts() {
+        return deviceWatts;
+    }
+
+    public void setDeviceWatts(Boolean deviceWatts) {
+        this.deviceWatts = deviceWatts;
+    }
+
+    public Float getAverageTemp() {
         return averageTemp;
     }
 
-    public void setAverageTemp(Double averageTemp) {
+    public void setAverageTemp(Float averageTemp) {
         this.averageTemp = averageTemp;
     }
 
@@ -461,11 +494,27 @@ public class Activity {
         this.hasHeartrate = hasHeartrate;
     }
 
-    public Double getCalories() {
+    public Float getAverageHeartrate() {
+        return averageHeartrate;
+    }
+
+    public void setAverageHeartrate(Float averageHeartrate) {
+        this.averageHeartrate = averageHeartrate;
+    }
+
+    public Float getMaxHeartrate() {
+        return maxHeartrate;
+    }
+
+    public void setMaxHeartrate(Float maxHeartrate) {
+        this.maxHeartrate = maxHeartrate;
+    }
+
+    public Float getCalories() {
         return calories;
     }
 
-    public void setCalories(Double calories) {
+    public void setCalories(Float calories) {
         this.calories = calories;
     }
 

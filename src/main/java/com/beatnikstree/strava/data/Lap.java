@@ -19,10 +19,10 @@ public class Lap implements Serializable {
     private Activity activity;
     private Athlete athlete;
     @JsonProperty(value = "average_cadence")
-    private Double averageCadence;
+    private Float averageCadence;
     @JsonProperty(value = "average_speed")
-    private Double averageSpeed;
-    private Double distance;
+    private Float averageSpeed;
+    private Float distance;
     @JsonProperty(value = "elapsed_time")
     private Integer elapsedTime;
     @JsonProperty(value = "end_index")
@@ -30,7 +30,7 @@ public class Lap implements Serializable {
     @JsonProperty(value = "lap_index")
     private Integer lapIndex;
     @JsonProperty(value = "max_speed")
-    private Double maxSpeed;
+    private Float maxSpeed;
     @JsonProperty(value = "moving_time")
     private Integer movingTime;
     @JsonProperty(value = "pace_zone")
@@ -43,7 +43,7 @@ public class Lap implements Serializable {
     @JsonProperty(value = "start_index")
     private Integer startIndex;
     @JsonProperty(value = "total_elevation_gain")
-    private Double totalElevationGain;
+    private Float totalElevationGain;
 
     public Long getId() {
         return id;
@@ -93,27 +93,27 @@ public class Lap implements Serializable {
         this.athlete = athlete;
     }
 
-    public Double getAverageCadence() {
+    public Float getAverageCadence() {
         return averageCadence;
     }
 
-    public void setAverageCadence(Double averageCadence) {
+    public void setAverageCadence(Float averageCadence) {
         this.averageCadence = averageCadence;
     }
 
-    public Double getAverageSpeed() {
+    public Float getAverageSpeed() {
         return averageSpeed;
     }
 
-    public void setAverageSpeed(Double averageSpeed) {
+    public void setAverageSpeed(Float averageSpeed) {
         this.averageSpeed = averageSpeed;
     }
 
-    public Double getDistance() {
+    public Float getDistance() {
         return distance;
     }
 
-    public void setDistance(Double distance) {
+    public void setDistance(Float distance) {
         this.distance = distance;
     }
 
@@ -141,11 +141,11 @@ public class Lap implements Serializable {
         this.lapIndex = lapIndex;
     }
 
-    public Double getMaxSpeed() {
+    public Float getMaxSpeed() {
         return maxSpeed;
     }
 
-    public void setMaxSpeed(Double maxSpeed) {
+    public void setMaxSpeed(Float maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
 
@@ -197,11 +197,11 @@ public class Lap implements Serializable {
         this.startIndex = startIndex;
     }
 
-    public Double getTotalElevationGain() {
+    public Float getTotalElevationGain() {
         return totalElevationGain;
     }
 
-    public void setTotalElevationGain(Double totalElevationGain) {
+    public void setTotalElevationGain(Float totalElevationGain) {
         this.totalElevationGain = totalElevationGain;
     }
 }

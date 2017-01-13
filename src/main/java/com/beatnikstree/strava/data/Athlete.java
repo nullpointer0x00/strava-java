@@ -48,7 +48,11 @@ public class Athlete implements Serializable {
     private String measurementPreference;
     private String email;
     private Integer ftp;
-    private Double weight;
+    private Float weight;
+    private Club[] clubs;
+    private Gear[] bikes;
+    private Gear[] shoes;
+
 
     public Athlete() {
     }
@@ -253,11 +257,35 @@ public class Athlete implements Serializable {
         this.ftp = ftp;
     }
 
-    public Double getWeight() {
+    public Float getWeight() {
         return weight;
     }
 
-    public void setWeight(Double weight) {
+    public void setWeight(Float weight) {
         this.weight = weight;
+    }
+
+    public Club[] getClubs() {
+        return clubs;
+    }
+
+    public void setClubs(Club[] clubs) {
+        this.clubs = clubs;
+    }
+
+    public Gear[] getBikes() {
+        return bikes;
+    }
+
+    public void setBikes(Gear[] bikes) {
+        this.bikes = bikes;
+    }
+
+    public Gear[] getShoes() {
+        return shoes;
+    }
+
+    public void setShoes(Gear[] shoes) {
+        this.shoes = shoes;
     }
 }

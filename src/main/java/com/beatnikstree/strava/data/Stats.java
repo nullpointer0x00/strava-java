@@ -10,9 +10,9 @@ import java.io.Serializable;
 public class Stats implements Serializable {
 
     @JsonProperty(value = "biggest_ride_distance")
-    private Double biggestRideDistance;
+    private Float biggestRideDistance;
     @JsonProperty(value = "biggest_climb_elevation_gain")
-    private Double biggestClimbElevationGain;
+    private Float biggestClimbElevationGain;
     @JsonProperty(value = "recent_ride_totals")
     private Totals recentRideTotals;
     @JsonProperty(value = "recent_run_totals")
@@ -32,19 +32,19 @@ public class Stats implements Serializable {
     @JsonProperty(value = "all_swim_totals")
     private Totals allSwimTotals;
 
-    public Double getBiggestRideDistance() {
+    public Float getBiggestRideDistance() {
         return biggestRideDistance;
     }
 
-    public void setBiggestRideDistance(Double biggestRideDistance) {
+    public void setBiggestRideDistance(Float biggestRideDistance) {
         this.biggestRideDistance = biggestRideDistance;
     }
 
-    public Double getBiggestClimbElevationGain() {
+    public Float getBiggestClimbElevationGain() {
         return biggestClimbElevationGain;
     }
 
-    public void setBiggestClimbElevationGain(Double biggestClimbElevationGain) {
+    public void setBiggestClimbElevationGain(Float biggestClimbElevationGain) {
         this.biggestClimbElevationGain = biggestClimbElevationGain;
     }
 

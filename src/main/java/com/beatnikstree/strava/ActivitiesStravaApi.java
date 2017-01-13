@@ -11,12 +11,11 @@ import java.util.Map;
  */
 public class ActivitiesStravaApi extends AbstractStravaApi {
 
-    public enum AthleteSex{
+    public enum AthleteSex {
         MALE("M"),
         FEMALE("F"),
         RATHER_NOT_SAY("RATHER_NOT_SAY"),
         DO_NOT_UPDATE("DO_NOT_UPDATE");
-
 
 
         private String value;
@@ -35,15 +34,24 @@ public class ActivitiesStravaApi extends AbstractStravaApi {
         }
     }
 
-    public ActivitiesStravaApi(String apiKey){
+    public ActivitiesStravaApi(String apiKey) {
         super(apiKey);
     }
 
     public Activity getActivity(Long id) throws Exception {
         URI uri = this.buildUri("activities/" + id);
         String response = doJsonGet(uri);
-        if(response != null){
+        if (response != null) {
             return objectMapper.readValue(response, Activity.class);
+        }
+        return null;
+    }
+
+    public Activity[] getAthleteActivities() throws Exception {
+        URI uri = this.buildUri("athlete/activities");
+        String response = doJsonGet(uri);
+        if (response != null) {
+            return objectMapper.readValue(response, Activity[].class);
         }
         return null;
     }

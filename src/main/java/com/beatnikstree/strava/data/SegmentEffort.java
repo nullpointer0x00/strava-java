@@ -27,21 +27,21 @@ public class SegmentEffort implements Serializable {
     private Date startDate;
     @JsonProperty(value = "start_date_local")
     private Date startDateLocal;
-    private Double distance;
+    private Float distance;
     @JsonProperty(value = "start_index")
     private Integer startIndex;
     @JsonProperty(value = "end_index")
     private Integer endIndex;
     @JsonProperty(value = "average_cadence")
-    private Double averageCandence;
+    private Float averageCandence;
     @JsonProperty(value = "average_watts")
-    private Double avarageWatts;
+    private Float avarageWatts;
     @JsonProperty(value = "device_watts")
     private Boolean deviceWatts;
     @JsonProperty(value = "average_heartrate")
-    private Double averageHeartRate;
+    private Float averageHeartRate;
     @JsonProperty(value = "max_heartrate")
-    private Double maxHeartRate;
+    private Float maxHeartRate;
     @JsonProperty(value = "kom_rank")
     private Integer komRank;
     @JsonProperty(value = "pr_rank")
@@ -135,11 +135,11 @@ public class SegmentEffort implements Serializable {
         this.startDateLocal = startDateLocal;
     }
 
-    public Double getDistance() {
+    public Float getDistance() {
         return distance;
     }
 
-    public void setDistance(Double distance) {
+    public void setDistance(Float distance) {
         this.distance = distance;
     }
 
@@ -159,19 +159,19 @@ public class SegmentEffort implements Serializable {
         this.endIndex = endIndex;
     }
 
-    public Double getAverageCandence() {
+    public Float getAverageCandence() {
         return averageCandence;
     }
 
-    public void setAverageCandence(Double averageCandence) {
+    public void setAverageCandence(Float averageCandence) {
         this.averageCandence = averageCandence;
     }
 
-    public Double getAvarageWatts() {
+    public Float getAvarageWatts() {
         return avarageWatts;
     }
 
-    public void setAvarageWatts(Double avarageWatts) {
+    public void setAvarageWatts(Float avarageWatts) {
         this.avarageWatts = avarageWatts;
     }
 
@@ -183,19 +183,19 @@ public class SegmentEffort implements Serializable {
         this.deviceWatts = deviceWatts;
     }
 
-    public Double getAverageHeartRate() {
+    public Float getAverageHeartRate() {
         return averageHeartRate;
     }
 
-    public void setAverageHeartRate(Double averageHeartRate) {
+    public void setAverageHeartRate(Float averageHeartRate) {
         this.averageHeartRate = averageHeartRate;
     }
 
-    public Double getMaxHeartRate() {
+    public Float getMaxHeartRate() {
         return maxHeartRate;
     }
 
-    public void setMaxHeartRate(Double maxHeartRate) {
+    public void setMaxHeartRate(Float maxHeartRate) {
         this.maxHeartRate = maxHeartRate;
     }
 

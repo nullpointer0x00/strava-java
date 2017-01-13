@@ -10,13 +10,13 @@ import java.io.Serializable;
 public class Totals implements Serializable {
 
     private Integer count;
-    private Double distance;
+    private Float distance;
     @JsonProperty(value = "moving_time")
     private Integer movingTime;
     @JsonProperty(value = "elapsed_time")
     private Integer elapsedTime;
     @JsonProperty(value = "elevation_gain")
-    private Double elevationGain;
+    private Float elevationGain;
     @JsonProperty(value = "achievement_count")
     private Integer achievementCount;
 
@@ -28,11 +28,11 @@ public class Totals implements Serializable {
         this.count = count;
     }
 
-    public Double getDistance() {
+    public Float getDistance() {
         return distance;
     }
 
-    public void setDistance(Double distance) {
+    public void setDistance(Float distance) {
         this.distance = distance;
     }
 
@@ -52,11 +52,11 @@ public class Totals implements Serializable {
         this.elapsedTime = elapsedTime;
     }
 
-    public Double getElevationGain() {
+    public Float getElevationGain() {
         return elevationGain;
     }
 
-    public void setElevationGain(Double elevationGain) {
+    public void setElevationGain(Float elevationGain) {
         this.elevationGain = elevationGain;
     }
 
