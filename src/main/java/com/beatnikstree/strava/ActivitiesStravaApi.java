@@ -95,7 +95,33 @@ public class ActivitiesStravaApi extends AbstractStravaApi {
     }
 
     public Activity[] getFriendsActivities() throws Exception {
+        return getFriendsActivities(null, null, null);
+    }
+
+    public Activity[] getFriendActivities(int page, int perPage) throws Exception {
+        return getFriendsActivities(null, page, perPage);
+    }
+
+    public Activity[] getFriendsActivitiesBefore(Date before) throws Exception {
+        return getFriendsActivities(before, null, null);
+    }
+
+    public Activity[] getFriendsActivitiesBefore(Date before, int perPage) throws Exception {
+        return getFriendsActivities(before, null, perPage);
+    }
+
+
+    private Activity[] getFriendsActivities(Date before, Integer page, Integer perPage) throws Exception {
         Map<String, String> params = new HashMap<>();
+        if (before != null) {
+            params.put("before", (before.getTime() / 1000) + "");
+        }
+        if (page != null) {
+            params.put("page", page + "");
+        }
+        if (perPage != null) {
+            params.put("per_page", perPage + "");
+        }
         URI uri = this.buildUri("activities/following", params);
         String response = doJsonGet(uri);
         if (response != null) {

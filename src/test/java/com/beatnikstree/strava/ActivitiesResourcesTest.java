@@ -2,12 +2,17 @@ package com.beatnikstree.strava;
 
 import com.beatnikstree.strava.data.*;
 import org.apache.commons.io.IOUtils;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
@@ -105,5 +110,44 @@ public class ActivitiesResourcesTest {
         Activity[] activities = stravaResources.getActivitiesStravaApi().getFriendsActivities();
         assertNotNull(activities);
         assertTrue(activities.length > 0);
+    }
+
+    @Test
+    public void activitesStravaApiShouldGetFriendsPaged() throws Exception {
+        Set<Long> set = new HashSet<>();
+        Activity[] activities = stravaResources.getActivitiesStravaApi().getFriendActivities(1, 5);
+        assertNotNull(activities);
+        assertEquals(5, activities.length);
+        set.addAll(Arrays.stream(activities).map(i -> i.getId()).collect(Collectors.toList()));
+
+        activities = stravaResources.getActivitiesStravaApi().getFriendActivities(2, 5);
+        assertEquals(5, activities.length);
+        Arrays.stream(activities).forEach(a -> assertTrue("There should be no repeat ids. Set already contains: " + a.getId(), !set.contains(a.getId())));
+    }
+
+    @Test
+    public void activitesStravaApiShouldGetFriendsBeforeDate() throws Exception {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_YEAR, -7);
+        Activity[] activities = stravaResources.getActivitiesStravaApi().getFriendsActivitiesBefore(cal.getTime());
+        assertNotNull(activities);
+        assertEquals(30, activities.length);
+
+        for (Activity activity : activities) {
+            assertTrue("Date " + activity.getStartDate() + " is not before " + cal.getTime(), activity.getStartDate().before(cal.getTime()));
+        }
+    }
+
+    @Test
+    public void activitesStravaApiShouldGetFriendsBeforeDatePerPage() throws Exception {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_YEAR, -7);
+        Activity[] activities = stravaResources.getActivitiesStravaApi().getFriendsActivitiesBefore(cal.getTime(), 2);
+        assertNotNull(activities);
+        assertEquals(2, activities.length);
+
+        for (Activity activity : activities) {
+            assertTrue("Date " + activity.getStartDate() + " is not before " + cal.getTime(), activity.getStartDate().before(cal.getTime()));
+        }
     }
 }
