@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by nullpointer0x00 on 12/28/16.
@@ -49,9 +50,9 @@ public class Athlete implements Serializable {
     private String email;
     private Integer ftp;
     private Float weight;
-    private Club[] clubs;
-    private Gear[] bikes;
-    private Gear[] shoes;
+    private List<Club> clubs;
+    private List<Gear> bikes;
+    private List<Gear> shoes;
 
 
     public Athlete() {
@@ -265,27 +266,27 @@ public class Athlete implements Serializable {
         this.weight = weight;
     }
 
-    public Club[] getClubs() {
+    public List<Club> getClubs() {
         return clubs;
     }
 
-    public void setClubs(Club[] clubs) {
+    public void setClubs(List<Club> clubs) {
         this.clubs = clubs;
     }
 
-    public Gear[] getBikes() {
+    public List<Gear> getBikes() {
         return bikes;
     }
 
-    public void setBikes(Gear[] bikes) {
+    public void setBikes(List<Gear> bikes) {
         this.bikes = bikes;
     }
 
-    public Gear[] getShoes() {
+    public List<Gear> getShoes() {
         return shoes;
     }
 
-    public void setShoes(Gear[] shoes) {
+    public void setShoes(List<Gear> shoes) {
         this.shoes = shoes;
     }
 }

@@ -8,10 +8,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -45,25 +42,32 @@ public class ActivitiesResourcesTest {
 
     @Test
     public void activitesStravaApiShouldAuthenticatedAthletesActivites() throws Exception {
-        Activity[] activities = stravaResources.getActivitiesStravaApi().getAthleteActivities();
+        List<Activity> activities = stravaResources.getActivitiesStravaApi().getAthleteActivities();
         assertNotNull(activities);
-        assertTrue(activities.length > 0);
+        assertEquals(30, activities.size());
     }
 
     @Test
     public void activitesStravaApiShouldAuthenticatedAthletesActivitesPaged() throws Exception {
-        Activity[] activities = stravaResources.getActivitiesStravaApi().getAthleteActivities(1, 10);
+        Set<Long> set = new HashSet<>();
+        List<Activity> activities = stravaResources.getActivitiesStravaApi().getAthleteActivities(1, 10);
         assertNotNull(activities);
-        assertEquals(10, activities.length);
+        assertEquals(10, activities.size());
+
+        set.addAll(activities.stream().map(i -> i.getId()).collect(Collectors.toList()));
+
+        activities = stravaResources.getActivitiesStravaApi().getAthleteActivities(2, 10);
+        assertEquals(10, activities.size());
+        activities.stream().forEach(a -> assertTrue("There should be no repeat ids. Set already contains: " + a.getId(), !set.contains(a.getId())));
     }
 
     @Test
     public void activitesStravaApiShouldAuthenticatedAthletesActivitesAfter() throws Exception {
         Calendar cal = Calendar.getInstance();
         cal.set(2016, 2, 2);
-        Activity[] activities = stravaResources.getActivitiesStravaApi().getAthleteActivitiesAfter(cal.getTime());
+        List<Activity> activities = stravaResources.getActivitiesStravaApi().getAthleteActivitiesAfter(cal.getTime());
         assertNotNull(activities);
-        assertTrue(activities.length > 0);
+        assertEquals(30, activities.size());
         for (Activity activity : activities) {
             assertTrue(activity.getStartDate().after(cal.getTime()));
         }
@@ -73,9 +77,9 @@ public class ActivitiesResourcesTest {
     public void activitesStravaApiShouldAuthenticatedAthletesActivitesAfterPerPage() throws Exception {
         Calendar cal = Calendar.getInstance();
         cal.set(2016, 2, 2);
-        Activity[] activities = stravaResources.getActivitiesStravaApi().getAthleteActivitiesAfter(cal.getTime(), 10);
+        List<Activity> activities = stravaResources.getActivitiesStravaApi().getAthleteActivitiesAfter(cal.getTime(), 10);
         assertNotNull(activities);
-        assertEquals(10, activities.length);
+        assertEquals(10, activities.size());
         for (Activity activity : activities) {
             assertTrue(activity.getStartDate().after(cal.getTime()));
         }
@@ -85,9 +89,9 @@ public class ActivitiesResourcesTest {
     public void activitesStravaApiShouldAuthenticatedAthletesActivitesBefore() throws Exception {
         Calendar cal = Calendar.getInstance();
         cal.set(2016, 2, 2);
-        Activity[] activities = stravaResources.getActivitiesStravaApi().getAthleteActivitiesBefore(cal.getTime());
+        List<Activity> activities = stravaResources.getActivitiesStravaApi().getAthleteActivitiesBefore(cal.getTime());
         assertNotNull(activities);
-        assertTrue(activities.length > 0);
+        assertEquals(30, activities.size());
         for (Activity activity : activities) {
             assertTrue(activity.getStartDate().before(cal.getTime()));
         }
@@ -97,9 +101,9 @@ public class ActivitiesResourcesTest {
     public void activitesStravaApiShouldAuthenticatedAthletesActivitesBeforePage() throws Exception {
         Calendar cal = Calendar.getInstance();
         cal.set(2016, 2, 2);
-        Activity[] activities = stravaResources.getActivitiesStravaApi().getAthleteActivitiesBefore(cal.getTime(), 10);
+        List<Activity> activities = stravaResources.getActivitiesStravaApi().getAthleteActivitiesBefore(cal.getTime(), 10);
         assertNotNull(activities);
-        assertEquals(10, activities.length);
+        assertEquals(10, activities.size());
         for (Activity activity : activities) {
             assertTrue(activity.getStartDate().before(cal.getTime()));
         }
@@ -107,31 +111,31 @@ public class ActivitiesResourcesTest {
 
     @Test
     public void activitesStravaApiShouldGetFriendsActivites() throws Exception {
-        Activity[] activities = stravaResources.getActivitiesStravaApi().getFriendsActivities();
+        List<Activity> activities = stravaResources.getActivitiesStravaApi().getFriendsActivities();
         assertNotNull(activities);
-        assertTrue(activities.length > 0);
+        assertTrue(activities.size() > 0);
     }
 
     @Test
     public void activitesStravaApiShouldGetFriendsPaged() throws Exception {
         Set<Long> set = new HashSet<>();
-        Activity[] activities = stravaResources.getActivitiesStravaApi().getFriendActivities(1, 5);
+        List<Activity> activities = stravaResources.getActivitiesStravaApi().getFriendActivities(1, 5);
         assertNotNull(activities);
-        assertEquals(5, activities.length);
-        set.addAll(Arrays.stream(activities).map(i -> i.getId()).collect(Collectors.toList()));
+        assertEquals(5, activities.size());
+        set.addAll(activities.stream().map(i -> i.getId()).collect(Collectors.toList()));
 
         activities = stravaResources.getActivitiesStravaApi().getFriendActivities(2, 5);
-        assertEquals(5, activities.length);
-        Arrays.stream(activities).forEach(a -> assertTrue("There should be no repeat ids. Set already contains: " + a.getId(), !set.contains(a.getId())));
+        assertEquals(5, activities.size());
+        activities.stream().forEach(a -> assertTrue("There should be no repeat ids. Set already contains: " + a.getId(), !set.contains(a.getId())));
     }
 
     @Test
     public void activitesStravaApiShouldGetFriendsBeforeDate() throws Exception {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_YEAR, -7);
-        Activity[] activities = stravaResources.getActivitiesStravaApi().getFriendsActivitiesBefore(cal.getTime());
+        List<Activity> activities = stravaResources.getActivitiesStravaApi().getFriendsActivitiesBefore(cal.getTime());
         assertNotNull(activities);
-        assertEquals(30, activities.length);
+        assertEquals(30, activities.size());
 
         for (Activity activity : activities) {
             assertTrue("Date " + activity.getStartDate() + " is not before " + cal.getTime(), activity.getStartDate().before(cal.getTime()));
@@ -142,9 +146,9 @@ public class ActivitiesResourcesTest {
     public void activitesStravaApiShouldGetFriendsBeforeDatePerPage() throws Exception {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_YEAR, -7);
-        Activity[] activities = stravaResources.getActivitiesStravaApi().getFriendsActivitiesBefore(cal.getTime(), 2);
+        List<Activity> activities = stravaResources.getActivitiesStravaApi().getFriendsActivitiesBefore(cal.getTime(), 2);
         assertNotNull(activities);
-        assertEquals(2, activities.length);
+        assertEquals(2, activities.size());
 
         for (Activity activity : activities) {
             assertTrue("Date " + activity.getStartDate() + " is not before " + cal.getTime(), activity.getStartDate().before(cal.getTime()));

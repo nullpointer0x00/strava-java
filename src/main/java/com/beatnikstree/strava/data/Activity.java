@@ -62,7 +62,7 @@ public class Activity {
     private Integer photoCount;
     @JsonProperty(value = "total_photo_count")
     private Integer totalPhotoCount;
-    private Photo[] photos;
+    private List<Photo> photos;
     private ActivityMap map;
     private Boolean trainer;
     private Boolean commute;
@@ -103,12 +103,12 @@ public class Activity {
     @JsonProperty(value = "has_kudoed")
     private Boolean hasKudoed;
     @JsonProperty(value = "segment_efforts")
-    private SegmentEffort[] segmentEfforts;
+    private List<SegmentEffort> segmentEfforts;
     @JsonProperty(value = "splits_metric")
-    private Split[] splitsMetric;
+    private List<Split> splitsMetric;
     @JsonProperty(value = "splits_standard")
-    private Split[] splitsStandard;
-    private Lap[] laps;
+    private List<Split> splitsStandard;
+    private List<Lap> laps;
     @JsonProperty(value = "pr_count")
     private Integer prCount;
     @JsonProperty(value = "best_efforts")
@@ -354,11 +354,11 @@ public class Activity {
         this.totalPhotoCount = totalPhotoCount;
     }
 
-    public Photo[] getPhotos() {
+    public List<Photo> getPhotos() {
         return photos;
     }
 
-    public void setPhotos(Photo[] photos) {
+    public void setPhotos(List<Photo> photos) {
         this.photos = photos;
     }
 
@@ -546,27 +546,27 @@ public class Activity {
         this.hasKudoed = hasKudoed;
     }
 
-    public SegmentEffort[] getSegmentEfforts() {
+    public List<SegmentEffort> getSegmentEfforts() {
         return segmentEfforts;
     }
 
-    public void setSegmentEfforts(SegmentEffort[] segmentEfforts) {
+    public void setSegmentEfforts(List<SegmentEffort> segmentEfforts) {
         this.segmentEfforts = segmentEfforts;
     }
 
-    public Split[] getSplitsMetric() {
+    public List<Split> getSplitsMetric() {
         return splitsMetric;
     }
 
-    public void setSplitsMetric(Split[] splitsMetric) {
+    public void setSplitsMetric(List<Split> splitsMetric) {
         this.splitsMetric = splitsMetric;
     }
 
-    public Split[] getSplitsStandard() {
+    public List<Split> getSplitsStandard() {
         return splitsStandard;
     }
 
-    public void setSplitsStandard(Split[] splitsStandard) {
+    public void setSplitsStandard(List<Split> splitsStandard) {
         this.splitsStandard = splitsStandard;
     }
 
@@ -602,7 +602,11 @@ public class Activity {
         this.locationCountry = locationCountry;
     }
 
-    public void setLaps(Lap[] laps) {
+    public List<Lap> getLaps() {
+        return laps;
+    }
+
+    public void setLaps(List<Lap> laps) {
         this.laps = laps;
     }
 
@@ -612,10 +616,6 @@ public class Activity {
 
     public void setPrCount(Integer prCount) {
         this.prCount = prCount;
-    }
-
-    public Lap[] getLaps() {
-        return laps;
     }
 
     public Integer getSufferScore() {

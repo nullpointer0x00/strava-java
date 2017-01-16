@@ -6,6 +6,7 @@ import com.sun.jndi.toolkit.url.Uri;
 import java.net.URI;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,12 +14,11 @@ import java.util.Map;
  */
 public class AthleteStravaApi extends AbstractStravaApi {
 
-    public enum AthleteSex{
+    public enum AthleteSex {
         MALE("M"),
         FEMALE("F"),
         RATHER_NOT_SAY("RATHER_NOT_SAY"),
         DO_NOT_UPDATE("DO_NOT_UPDATE");
-
 
 
         private String value;
@@ -37,14 +37,14 @@ public class AthleteStravaApi extends AbstractStravaApi {
         }
     }
 
-    public AthleteStravaApi(String apiKey){
+    public AthleteStravaApi(String apiKey) {
         super(apiKey);
     }
 
     public Athlete getAthelete() throws Exception {
         URI uri = this.buildUri("athlete");
         String response = doJsonGet(uri);
-        if(response != null){
+        if (response != null) {
             return objectMapper.readValue(response, Athlete.class);
         }
         return null;
@@ -53,7 +53,7 @@ public class AthleteStravaApi extends AbstractStravaApi {
     public Athlete getAthelete(Long id) throws Exception {
         URI uri = this.buildUri("athletes/" + id);
         String response = doJsonGet(uri);
-        if(response != null){
+        if (response != null) {
             return objectMapper.readValue(response, Athlete.class);
         }
         return null;
@@ -62,8 +62,9 @@ public class AthleteStravaApi extends AbstractStravaApi {
 
     public Zones getAthleteZones() throws Exception {
         URI uri = this.buildUri("athlete/zones");
-        String response = doJsonGet(uri);;
-        if(response != null){
+        String response = doJsonGet(uri);
+        ;
+        if (response != null) {
             return objectMapper.readValue(response, Zones.class);
         }
         return null;
@@ -72,28 +73,28 @@ public class AthleteStravaApi extends AbstractStravaApi {
     public Stats getAthleteStats(Long id) throws Exception {
         URI uri = this.buildUri("athletes/" + id + "/stats");
         String response = doJsonGet(uri);
-        if(response != null){
+        if (response != null) {
             return objectMapper.readValue(response, Stats.class);
         }
         return null;
     }
 
-    public SegmentEffort[] getListAthleteKOMS(Long id) throws Exception {
+    public List<SegmentEffort> getListAthleteKOMS(Long id) throws Exception {
         return getListAthleteKOMS(id, 0, 0);
     }
 
-    public SegmentEffort[] getListAthleteKOMS(Long id, int perPage, int page) throws Exception {
+    public List<SegmentEffort> getListAthleteKOMS(Long id, int perPage, int page) throws Exception {
         Map<String, String> params = new HashMap<>();
-        if(perPage != 0){
+        if (perPage != 0) {
             params.put("per_page", perPage + "");
         }
-        if(page != 0){
+        if (page != 0) {
             params.put("page", page + "");
         }
         URI uri = this.buildUri("athletes/" + id + "/koms", params);
         String response = doJsonGet(uri);
-        if(response != null){
-            return objectMapper.readValue(response, SegmentEffort[].class);
+        if (response != null) {
+            return objectMapper.readValue(response, SegmentEffortList.class);
         }
         return null;
     }

@@ -5,6 +5,7 @@ import com.beatnikstree.strava.data.*;
 import java.net.URI;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -48,31 +49,31 @@ public class ActivitiesStravaApi extends AbstractStravaApi {
         return null;
     }
 
-    public Activity[] getAthleteActivities() throws Exception {
+    public List<Activity> getAthleteActivities() throws Exception {
         return getAthleteActivities(null, null, null, null);
     }
 
-    public Activity[] getAthleteActivities(int page, int perPage) throws Exception {
+    public List<Activity> getAthleteActivities(int page, int perPage) throws Exception {
         return getAthleteActivities(null, null, page, perPage);
     }
 
-    public Activity[] getAthleteActivitiesBefore(Date before) throws Exception {
+    public List<Activity> getAthleteActivitiesBefore(Date before) throws Exception {
         return getAthleteActivities(before, null, null, null);
     }
 
-    public Activity[] getAthleteActivitiesBefore(Date before, int perPage) throws Exception {
+    public List<Activity> getAthleteActivitiesBefore(Date before, int perPage) throws Exception {
         return getAthleteActivities(before, null, null, perPage);
     }
 
-    public Activity[] getAthleteActivitiesAfter(Date after) throws Exception {
+    public List<Activity> getAthleteActivitiesAfter(Date after) throws Exception {
         return getAthleteActivities(null, after, null, null);
     }
 
-    public Activity[] getAthleteActivitiesAfter(Date after, int perPage) throws Exception {
+    public List<Activity> getAthleteActivitiesAfter(Date after, int perPage) throws Exception {
         return getAthleteActivities(null, after, null, perPage);
     }
 
-    private Activity[] getAthleteActivities(Date before, Date after, Integer page, Integer perPage) throws Exception {
+    private List<Activity> getAthleteActivities(Date before, Date after, Integer page, Integer perPage) throws Exception {
         Map<String, String> params = new HashMap<>();
         if (before != null) {
             params.put("before", (before.getTime() / 1000) + "");
@@ -89,29 +90,29 @@ public class ActivitiesStravaApi extends AbstractStravaApi {
         URI uri = this.buildUri("athlete/activities", params);
         String response = doJsonGet(uri);
         if (response != null) {
-            return objectMapper.readValue(response, Activity[].class);
+            return objectMapper.readValue(response, ActivityList.class);
         }
         return null;
     }
 
-    public Activity[] getFriendsActivities() throws Exception {
+    public List<Activity> getFriendsActivities() throws Exception {
         return getFriendsActivities(null, null, null);
     }
 
-    public Activity[] getFriendActivities(int page, int perPage) throws Exception {
+    public List<Activity> getFriendActivities(int page, int perPage) throws Exception {
         return getFriendsActivities(null, page, perPage);
     }
 
-    public Activity[] getFriendsActivitiesBefore(Date before) throws Exception {
+    public List<Activity> getFriendsActivitiesBefore(Date before) throws Exception {
         return getFriendsActivities(before, null, null);
     }
 
-    public Activity[] getFriendsActivitiesBefore(Date before, int perPage) throws Exception {
+    public List<Activity> getFriendsActivitiesBefore(Date before, int perPage) throws Exception {
         return getFriendsActivities(before, null, perPage);
     }
 
 
-    private Activity[] getFriendsActivities(Date before, Integer page, Integer perPage) throws Exception {
+    private List<Activity> getFriendsActivities(Date before, Integer page, Integer perPage) throws Exception {
         Map<String, String> params = new HashMap<>();
         if (before != null) {
             params.put("before", (before.getTime() / 1000) + "");
@@ -125,7 +126,7 @@ public class ActivitiesStravaApi extends AbstractStravaApi {
         URI uri = this.buildUri("activities/following", params);
         String response = doJsonGet(uri);
         if (response != null) {
-            return objectMapper.readValue(response, Activity[].class);
+            return objectMapper.readValue(response, ActivityList.class);
         }
         return null;
     }

@@ -6,10 +6,12 @@ import org.apache.commons.io.IOUtils;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by nullpointer0x00 on 12/28/16.
@@ -63,15 +65,15 @@ public class AthleteResourcesTest {
 
     @Test
     public void athleteStravaApiShouldGetListAthleteKMOS() throws Exception {
-        SegmentEffort[] stats = stravaResources.getAthleteStravaApi().getListAthleteKOMS(1481479L);
+        List<SegmentEffort> stats = stravaResources.getAthleteStravaApi().getListAthleteKOMS(1481479L);
         assertNotNull(stats);
     }
 
     @Test
     public void athleteStravaApiShouldGetListAthleteKMOSWithPages() throws Exception {
-        SegmentEffort[] stats = stravaResources.getAthleteStravaApi().getListAthleteKOMS(1481479L, 1, 3);
+        List<SegmentEffort> stats = stravaResources.getAthleteStravaApi().getListAthleteKOMS(1481479L, 1, 3);
         assertNotNull(stats);
-        assertEquals(1, stats.length);
+        assertEquals(1, stats.size());
     }
 
 }
