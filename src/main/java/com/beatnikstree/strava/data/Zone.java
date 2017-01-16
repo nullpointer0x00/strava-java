@@ -13,6 +13,7 @@ public class Zone implements Serializable {
     private Integer minimum;
     @JsonProperty(value = "max")
     private Integer maximum;
+    private Integer time;
 
     public Integer getMinimum() {
         return minimum;
@@ -28,5 +29,13 @@ public class Zone implements Serializable {
 
     public void setMaximum(Integer maximum) {
         this.maximum = maximum;
+    }
+
+    public Integer getTime() {
+        return time;
+    }
+
+    public void setTime(Integer time) {
+        this.time = time;
     }
 }

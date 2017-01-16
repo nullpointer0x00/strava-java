@@ -154,4 +154,13 @@ public class ActivitiesStravaApi extends AbstractStravaApi {
         }
         return null;
     }
+
+    public List<ActivityZones> getActivityZones(int id) throws Exception {
+        URI uri = this.buildUri("activities/" + id + "/zones");
+        String response = doJsonGet(uri);
+        if (response != null) {
+            return objectMapper.readValue(response, ActivityZonesList.class);
+        }
+        return null;
+    }
 }
