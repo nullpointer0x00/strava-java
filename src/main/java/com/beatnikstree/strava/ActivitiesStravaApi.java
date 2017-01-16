@@ -40,7 +40,7 @@ public class ActivitiesStravaApi extends AbstractStravaApi {
         super(apiKey);
     }
 
-    public Activity getActivity(Long id) throws Exception {
+    public Activity getActivity(long id) throws Exception {
         URI uri = this.buildUri("activities/" + id);
         String response = doJsonGet(uri);
         if (response != null) {
@@ -131,4 +131,27 @@ public class ActivitiesStravaApi extends AbstractStravaApi {
         return null;
     }
 
+    public List<Activity> getRelatedActivities(int id) throws Exception {
+        return getRelatedActivities(id, null, null);
+    }
+
+    public List<Activity> getRelatedActivitiesPaged(int id, int page, int perPage) throws Exception {
+        return getRelatedActivities(id, page, perPage);
+    }
+
+    private List<Activity> getRelatedActivities(int id, Integer page, Integer perPage) throws Exception {
+        Map<String, String> params = new HashMap<>();
+        if (page != null) {
+            params.put("page", page + "");
+        }
+        if (perPage != null) {
+            params.put("per_page", perPage + "");
+        }
+        URI uri = this.buildUri("activities/" + id + "/related", params);
+        String response = doJsonGet(uri);
+        if (response != null) {
+            return objectMapper.readValue(response, ActivityList.class);
+        }
+        return null;
+    }
 }

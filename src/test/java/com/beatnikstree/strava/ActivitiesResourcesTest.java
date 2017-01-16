@@ -154,4 +154,25 @@ public class ActivitiesResourcesTest {
             assertTrue("Date " + activity.getStartDate() + " is not before " + cal.getTime(), activity.getStartDate().before(cal.getTime()));
         }
     }
+
+    @Test
+    public void activitesStravaApiShouldGetRelatedActivities() throws Exception {
+        List<Activity> activities = stravaResources.getActivitiesStravaApi().getRelatedActivities(132865910);
+        assertNotNull(activities);
+        assertEquals(29, activities.size());
+    }
+
+    @Test
+    public void activitesStravaApiShouldGetRelatedActivitiesPaged() throws Exception {
+        Set<Long> set = new HashSet<>();
+        List<Activity> activities = stravaResources.getActivitiesStravaApi().getRelatedActivitiesPaged(132865910, 1, 15);
+        assertNotNull(activities);
+        assertEquals(15, activities.size());
+        set.addAll(activities.stream().map(i -> i.getId()).collect(Collectors.toList()));
+
+        activities = stravaResources.getActivitiesStravaApi().getRelatedActivitiesPaged(132865910, 2, 15);
+        assertNotNull(activities);
+        assertEquals(14, activities.size());
+        activities.stream().forEach(a -> assertTrue("There should be no repeat ids. Set already contains: " + a.getId(), !set.contains(a.getId())));
+    }
 }
