@@ -163,4 +163,13 @@ public class ActivitiesStravaApi extends AbstractStravaApi {
         }
         return null;
     }
+
+    public List<Lap> getActivityLaps(int id) throws Exception {
+        URI uri = this.buildUri("activities/" + id + "/laps");
+        String response = doJsonGet(uri);
+        if (response != null) {
+            return objectMapper.readValue(response, LapList.class);
+        }
+        return null;
+    }
 }

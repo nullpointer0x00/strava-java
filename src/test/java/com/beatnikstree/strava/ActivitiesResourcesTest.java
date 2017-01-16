@@ -176,11 +176,17 @@ public class ActivitiesResourcesTest {
         activities.stream().forEach(a -> assertTrue("There should be no repeat ids. Set already contains: " + a.getId(), !set.contains(a.getId())));
     }
 
-    //
     @Test
     public void activitesStravaApiShouldGetActivityZones() throws Exception {
         List<ActivityZones> zones = stravaResources.getActivitiesStravaApi().getActivityZones(832815168);
         assertNotNull(zones);
         assertEquals(1, zones.size());
+    }
+
+    @Test
+    public void activitesStravaApiShouldGetActivityLaps() throws Exception {
+        List<Lap> laps = stravaResources.getActivitiesStravaApi().getActivityLaps(833416030);
+        assertNotNull(laps);
+        assertEquals(1, laps.size());
     }
 }
