@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by nullpointer0x00 on 12/27/16.
  */
-public class ActivitiesStravaApi extends AbstractStravaApi {
+public class ActivityStravaApi extends AbstractStravaApi {
 
     public enum AthleteSex {
         MALE("M"),
@@ -36,7 +36,7 @@ public class ActivitiesStravaApi extends AbstractStravaApi {
         }
     }
 
-    public ActivitiesStravaApi(String apiKey) {
+    public ActivityStravaApi(String apiKey) {
         super(apiKey);
     }
 

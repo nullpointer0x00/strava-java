@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by nullpointer0x00 on 12/28/16.
  */
-public class AthleteResourcesTest {
+public class AthleteStravaApiTest {
 
     String accessToken;
     StravaResources stravaResources;
