@@ -26,7 +26,7 @@ mvn clean package -DskipTests
 
 You will need to have tests for every feature that is added.  In order to setup your testing environment, you will need to add a file under the testing resouces with your strava access token.
 
-test/java/resouces/strava-access-token.txt
+test/java/resouces/strava-access-token.txt _Note: This file is in the .gitignore and should never be checked into the repository._
 
 Within that file you will place your key on the first line.
 
