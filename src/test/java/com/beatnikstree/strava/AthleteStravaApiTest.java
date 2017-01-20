@@ -28,7 +28,6 @@ public class AthleteStravaApiTest {
         InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream("strava-access-token.txt");
         accessToken = IOUtils.toString(stream, "UTF-8");
         this.stravaResources = new StravaResources(accessToken);
-
     }
 
     @Test

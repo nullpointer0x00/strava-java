@@ -39,6 +39,8 @@ public class Club implements Serializable {
     @JsonProperty(value = "following_count")
     private Integer followingCount;
     private String url;
+    @JsonProperty(value = "post_count")
+    private Integer postCount;
 
     public Long getId() {
         return id;
@@ -214,5 +216,13 @@ public class Club implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Integer getPostCount() {
+        return postCount;
+    }
+
+    public void setPostCount(Integer postCount) {
+        this.postCount = postCount;
     }
 }
