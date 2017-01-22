@@ -8,6 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by nullpointer0x00 on 1/16/17.
@@ -30,5 +31,12 @@ public class ClubStravaApiTest {
     public void clubStravaApiShouldReturnClubById() throws Exception {
         Club club = stravaResources.getClubStravaApi().getClub(1L);
         assertNotNull(club);
+    }
+
+    @Test
+    public void clubStravaApiShouldReturnAthletesClubs() throws Exception {
+        List<Club> clubs = stravaResources.getClubStravaApi().getClubs();
+        assertNotNull(clubs);
+        assertTrue(clubs.size() > 0);
     }
 }
