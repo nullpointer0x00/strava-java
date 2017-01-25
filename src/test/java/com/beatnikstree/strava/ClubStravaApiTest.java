@@ -1,5 +1,6 @@
 package com.beatnikstree.strava;
 
+import com.beatnikstree.strava.data.Annoucement;
 import com.beatnikstree.strava.data.Club;
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
@@ -31,6 +32,14 @@ public class ClubStravaApiTest {
     public void clubStravaApiShouldReturnClubById() throws Exception {
         Club club = stravaResources.getClubStravaApi().getClub(1L);
         assertNotNull(club);
+    }
+
+    @Test
+    public void clubStravaApiShouldReturnClubAnnouncements() throws Exception {
+        List<Annoucement> annoucements = stravaResources.getClubStravaApi().getClubAnnouncements(254086);
+        assertNotNull(annoucements);
+        assertEquals(1, annoucements.size());
+        assertEquals(254086, (int) annoucements.get(0).getId());
     }
 
     @Test

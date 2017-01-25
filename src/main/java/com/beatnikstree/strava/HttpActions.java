@@ -58,6 +58,9 @@ public class HttpActions {
             resource = (query != null ? resource.substring(0, resource.indexOf(query) - 1) : resource);
             throw new Exception("I/O error on " + method +
                     " request for \"" + resource + "\": " + ex.getMessage(), ex);
+        } catch (Exception ex){
+            throw new Exception("Exception error on " + method +
+                    " request for \"" + url.getPath() + "\": " + ex.getMessage(), ex);
         }
         finally {
             if (connection != null) {

@@ -1,8 +1,6 @@
 package com.beatnikstree.strava;
 
-import com.beatnikstree.strava.data.Athlete;
-import com.beatnikstree.strava.data.Club;
-import com.beatnikstree.strava.data.ClubList;
+import com.beatnikstree.strava.data.*;
 
 import java.net.URI;
 import java.util.List;
@@ -21,6 +19,15 @@ public class ClubStravaApi extends AbstractStravaApi {
         String response = doJsonGet(uri);
         if (response != null) {
             return objectMapper.readValue(response, Club.class);
+        }
+        return null;
+    }
+
+    public List<Annoucement> getClubAnnouncements(int clubId)  throws Exception{
+        URI uri = this.buildUri("clubs/" + clubId + "/announcements");
+        String response = doJsonGet(uri);
+        if (response != null) {
+            return objectMapper.readValue(response, AnnoucementList.class);
         }
         return null;
     }
