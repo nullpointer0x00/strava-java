@@ -6,6 +6,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
+ * Test for {@link Connection}
+ *
  * Created by nullpointer0x00 on 12/28/16.
  */
 public class ConnectionTest {

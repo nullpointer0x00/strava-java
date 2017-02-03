@@ -6,6 +6,9 @@ import org.junit.Test;
 import java.net.URI;
 
 /**
+ *
+ * Test for {@link HttpActions}
+ *
  * Created by nullpointer0x00 on 12/16/16.
  */
 public class HttpActionsTest {

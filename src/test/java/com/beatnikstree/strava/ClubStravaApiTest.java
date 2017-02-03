@@ -1,17 +1,23 @@
 package com.beatnikstree.strava;
 
 import com.beatnikstree.strava.data.Annoucement;
+import com.beatnikstree.strava.data.Athlete;
 import com.beatnikstree.strava.data.Club;
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 import java.io.InputStream;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
+ * Test for {@link ClubStravaApi}
+ * <p>
  * Created by nullpointer0x00 on 1/16/17.
  */
 public class ClubStravaApiTest {
@@ -35,6 +41,7 @@ public class ClubStravaApiTest {
     }
 
     @Test
+    @Ignore("I believe this is not longer supported.")
     public void clubStravaApiShouldReturnClubAnnouncements() throws Exception {
         List<Annoucement> annoucements = stravaResources.getClubStravaApi().getClubAnnouncements(254086);
         assertNotNull(annoucements);
@@ -47,5 +54,26 @@ public class ClubStravaApiTest {
         List<Club> clubs = stravaResources.getClubStravaApi().getClubs();
         assertNotNull(clubs);
         assertTrue(clubs.size() > 0);
+    }
+
+    @Test
+    public void clubStravaApiShouldReturnClubMembers() throws Exception {
+        List<Athlete> athletes = stravaResources.getClubStravaApi().getClubMembers(1);
+        assertNotNull(athletes);
+        assertTrue(athletes.size() > 0);
+    }
+
+    @Test
+    public void clubStravaApiShouldReturnClubMembersPaged() throws Exception {
+        Set<Long> ids = new HashSet<>();
+        List<Athlete> athletes = stravaResources.getClubStravaApi().getClubMembers(1, 10, 2);
+        assertNotNull(athletes);
+        assertEquals(10, athletes.size());
+        athletes.stream().forEach(athlete -> assertTrue("Id should not be in set: " + athlete.getId(), ids.add(athlete.getId())));
+
+        athletes = stravaResources.getClubStravaApi().getClubMembers(1, 10, 3);
+        assertNotNull(athletes);
+        assertEquals(10, athletes.size());
+        athletes.stream().forEach(athlete -> assertTrue("Id should not be in set: " + athlete.getId(), ids.add(athlete.getId())));
     }
 }

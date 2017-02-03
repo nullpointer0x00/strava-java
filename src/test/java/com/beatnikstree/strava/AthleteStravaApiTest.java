@@ -14,6 +14,9 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
+ *
+ * Test for {@link AthleteStravaApi}
+ *
  * Created by nullpointer0x00 on 12/28/16.
  */
 public class AthleteStravaApiTest {

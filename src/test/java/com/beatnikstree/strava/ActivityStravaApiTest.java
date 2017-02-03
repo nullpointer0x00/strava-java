@@ -14,6 +14,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
+ * Test for {@link ActivityStravaApi}
+ *
  * Created by nullpointer0x00 on 12/28/16.
  */
 public class ActivityStravaApiTest {
