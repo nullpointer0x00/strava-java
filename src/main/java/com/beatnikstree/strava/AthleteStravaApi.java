@@ -83,7 +83,7 @@ public class AthleteStravaApi extends AbstractStravaApi {
         return getListAthleteKOMS(id, 0, 0);
     }
 
-    public List<SegmentEffort> getListAthleteKOMS(Long id, int perPage, int page) throws Exception {
+    public List<SegmentEffort> getListAthleteKOMS(Long id, int page, int perPage) throws Exception {
         Map<String, String> params = new HashMap<>();
         if (perPage != 0) {
             params.put("per_page", perPage + "");

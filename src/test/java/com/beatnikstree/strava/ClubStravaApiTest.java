@@ -66,12 +66,12 @@ public class ClubStravaApiTest {
     @Test
     public void clubStravaApiShouldReturnClubMembersPaged() throws Exception {
         Set<Long> ids = new HashSet<>();
-        List<Athlete> athletes = stravaResources.getClubStravaApi().getClubMembers(1, 10, 2);
+        List<Athlete> athletes = stravaResources.getClubStravaApi().getClubMembers(1, 2, 10);
         assertNotNull(athletes);
         assertEquals(10, athletes.size());
         athletes.stream().forEach(athlete -> assertTrue("Id should not be in set: " + athlete.getId(), ids.add(athlete.getId())));
 
-        athletes = stravaResources.getClubStravaApi().getClubMembers(1, 10, 3);
+        athletes = stravaResources.getClubStravaApi().getClubMembers(1, 3, 10);
         assertNotNull(athletes);
         assertEquals(10, athletes.size());
         athletes.stream().forEach(athlete -> assertTrue("Id should not be in set: " + athlete.getId(), ids.add(athlete.getId())));

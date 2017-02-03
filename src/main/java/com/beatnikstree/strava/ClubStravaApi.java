@@ -48,7 +48,7 @@ public class ClubStravaApi extends AbstractStravaApi {
 
     }
 
-    public List<Athlete> getClubMembers(int clubId, int perPage, int page) throws Exception {
+    public List<Athlete> getClubMembers(int clubId, int page, int perPage) throws Exception {
         Map<String, String> params = new HashMap<>();
         if (perPage != 0) {
             params.put("per_page", perPage + "");

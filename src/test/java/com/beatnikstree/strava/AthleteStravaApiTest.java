@@ -11,7 +11,9 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -73,9 +75,16 @@ public class AthleteStravaApiTest {
 
     @Test
     public void athleteStravaApiShouldGetListAthleteKMOSWithPages() throws Exception {
+        Set ids = new HashSet<>();
         List<SegmentEffort> stats = stravaResources.getAthleteStravaApi().getListAthleteKOMS(1481479L, 1, 3);
         assertNotNull(stats);
-        assertEquals(1, stats.size());
+        assertEquals(3, stats.size());
+        stats.stream().forEach(stat -> assertTrue("Id should not be in set: " + stat.getId(), ids.add(stat.getId())));
+
+        stats = stravaResources.getAthleteStravaApi().getListAthleteKOMS(1481479L, 2, 3);
+        assertNotNull(stats);
+        assertEquals(3, stats.size());
+        stats.stream().forEach(stat -> assertTrue("Id should not be in set: " + stat.getId(), ids.add(stat.getId())));
     }
 
 }
