@@ -38,6 +38,8 @@ public class Activity {
     private Date startDateLocal;
     @JsonProperty(value = "timezone")
     private String timezone;
+    @JsonProperty(value = "utc_offset")
+    private Float utcOffset;
     @JsonProperty(value = "start_latitude")
     private Float endLatitude;
     @JsonProperty(value = "start_longitude")
@@ -256,6 +258,14 @@ public class Activity {
 
     public void setTimezone(String timezone) {
         this.timezone = timezone;
+    }
+
+    public Float getUtcOffset() {
+        return utcOffset;
+    }
+
+    public void setUtcOffset(Float utcOffset) {
+        this.utcOffset = utcOffset;
     }
 
     public Float getEndLatitude() {
